@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<MasterDetailPage xmlns="http://xamarin.com/schemas/2014/forms"
+                  xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                  Title=""
+                  x:Class="MasterDetailPageBehaviorIssue.Views.MainMasterDetailPage"
+                  IsPresented="{Binding Path=IsPresented, Mode=TwoWay}"
+                  MasterBehavior="{Binding Path=MasterBehavior, Mode=TwoWay}">
+   <MasterDetailPage.Master>
+      <ContentPage Title="TestPage">
+         <StackLayout>
+            <Button Text="PopoverPage"
+                    Command="{Binding Path=NavigateCommand}"
+                    CommandParameter="popover"
+                    Margin="20" />
+            <Button Text="SplitPage"
+                    Command="{Binding Path=NavigateCommand}"
+                    CommandParameter="split"
+                    Margin="20" />
+         </StackLayout>
+      </ContentPage>
+   </MasterDetailPage.Master>
+</MasterDetailPage>
