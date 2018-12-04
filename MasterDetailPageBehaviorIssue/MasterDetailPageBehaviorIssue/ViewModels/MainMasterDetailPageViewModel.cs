@@ -23,24 +23,28 @@ namespace MasterDetailPageBehaviorIssue.ViewModels
       {
          var targetUri = string.Empty;
          var targetBehavior = MasterBehavior;
+         var targetPresented = false;
 
          if (string.Equals(target, "popover", StringComparison.OrdinalIgnoreCase))
          {
             targetUri = $"{nameof(NavigationPage)}/{nameof(PopoverPage)}";
             targetBehavior = MasterBehavior.Popover;
+            targetPresented = false;
          }
          else if (string.Equals(target, "split", StringComparison.OrdinalIgnoreCase))
          {
             targetUri = $"{nameof(NavigationPage)}/{nameof(SplitPage)}";
             targetBehavior = MasterBehavior.Split;
+            targetPresented = true;
          }
 
          if (string.IsNullOrEmpty(targetUri))
             return;
 
-         MasterBehavior = targetBehavior;
-
          await NavigationService.NavigateAsync(targetUri);
+
+         MasterBehavior = targetBehavior;
+         IsPresented = targetPresented;
       }
    }
 }
